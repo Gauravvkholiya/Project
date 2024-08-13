@@ -37,18 +37,17 @@ pandas==2.2.2
 pillow==10.4.0
 protobuf==5.27.3
 psutil==6.0.0
-python==3.10.7
 py-cpuinfo==9.0.0
 pyarrow==17.0.0
 pydeck==0.9.1
 Pygments==2.18.0
 pyparsing==3.1.2
-pypiwin32==223
+pypiwin32==223  # Consider removing if not on Windows or not necessary
 pyserial==3.5
 python-dateutil==2.9.0.post0
 pyttsx3==2.90
 pytz==2024.1
-#pywin32==306
+pywin32==306  # Consider removing if not on Windows
 PyYAML==6.0.1
 referencing==0.35.1
 regex==2024.7.24
@@ -67,9 +66,9 @@ tbb==2021.11.0
 tenacity==8.5.0
 toml==0.10.2
 toolz==0.12.1
-torch==2.3.1+cpu
-torchaudio==2.3.1+cpu
-torchvision==0.18.1+cpu
+torch==2.3.1
+torchaudio==2.3.1
+torchvision==0.18.1
 tornado==6.4.1
 tqdm==4.66.4
 typing_extensions==4.12.2
