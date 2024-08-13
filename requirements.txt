@@ -23,6 +23,10 @@ jsonschema==4.23.0
 jsonschema-specifications==2023.12.1
 kiwisolver==1.4.5
 markdown-it-py==3.0.0
+torch==2.3.1
+torchaudio==2.3.1
+torchvision==0.18.1
+
 MarkupSafe==2.1.5
 matplotlib==3.9.1
 mdurl==0.1.2
@@ -42,12 +46,12 @@ pyarrow==17.0.0
 pydeck==0.9.1
 Pygments==2.18.0
 pyparsing==3.1.2
-pypiwin32==223  # Consider removing if not on Windows or not necessary
+#pypiwin32==223  # Consider removing if not on Windows or not necessary
 pyserial==3.5
 python-dateutil==2.9.0.post0
 pyttsx3==2.90
 pytz==2024.1
-pywin32==306  # Consider removing if not on Windows
+#pywin32==306  # Consider removing if not on Windows
 PyYAML==6.0.1
 referencing==0.35.1
 regex==2024.7.24
