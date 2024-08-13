@@ -76,7 +76,7 @@ def capture_and_display():
     detected_objects = {}
     
     #DISTANCE
-    ser = serial.Serial('COM7', 115200)
+    # ser = serial.Serial('COM7', 115200)
 
 
     duration = 200  # seconds
@@ -115,9 +115,9 @@ def capture_and_display():
         # Update the placeholder with the new frame
         image_placeholder.image(annotated_frame, channels="RGB", use_column_width=True)
 
-        if ser.in_waiting > 0:
-                line = ser.readline().decode('utf-8').rstrip()
-                text_placeholder.write(line)
+        # if ser.in_waiting > 0:
+        #         line = ser.readline().decode('utf-8').rstrip()
+        #         text_placeholder.write(line)
         # Check if the duration has passed
         if time.time() - start_time > duration:
             break
