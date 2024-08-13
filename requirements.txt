@@ -59,7 +59,7 @@ seaborn==0.13.2
 setuptools==72.1.0
 six==1.16.0
 smmap==5.0.1
-streamlit==1.37.1
+streamlit==1.22.0
 SpeechRecognition==3.10.4
 SpeechRecognition
 sympy==1.13.1
