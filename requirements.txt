@@ -60,6 +60,7 @@ setuptools==72.1.0
 six==1.16.0
 smmap==5.0.1
 SpeechRecognition==3.10.4
+SpeechRecognition
 streamlit==1.37.0
 sympy==1.13.1
 tbb==2021.11.0
