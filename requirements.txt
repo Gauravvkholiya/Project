@@ -39,7 +39,7 @@ opencv-python==4.10.0.84
 packaging==24.1
 pandas==2.2.2
 pillow==10.4.0
-protobuf==3.20.3
+
 
 psutil==6.0.0
 py-cpuinfo==9.0.0
