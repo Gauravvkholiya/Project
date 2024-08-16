@@ -2,3 +2,5 @@ opencv-python-headless
 ultralytics
 torch
 streamlit
+SpeechRecognition
+pyaudio
