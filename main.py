@@ -1,86 +1,86 @@
 import streamlit as st
-import cv2
-import time
-import speech_recognition as sr
-from ultralytics import YOLO
+# import cv2
+# import time
+# import speech_recognition as sr
+# from ultralytics import YOLO
 
-model = YOLO("yolov8n.pt")
-# Streamlit state for detected objects
-if 'detected_objects' not in st.session_state:
-    st.session_state.detected_objects = {}
+# model = YOLO("yolov8n.pt")
+# # Streamlit state for detected objects
+# if 'detected_objects' not in st.session_state:
+#     st.session_state.detected_objects = {}
 
 
-def capture_and_display():
-    # Open the webcam (0 is the default camera)
-    cap = cv2.VideoCapture(0)
+# def capture_and_display():
+#     # Open the webcam (0 is the default camera)
+#     cap = cv2.VideoCapture(0)
 
-    if not cap.isOpened():
-        st.write("Error: Could not open webcam.")
-        return {}
+#     if not cap.isOpened():
+#         st.write("Error: Could not open webcam.")
+#         return {}
 
-    # Dictionary to store detected objects and their counts
-    detected_objects = {}
+#     # Dictionary to store detected objects and their counts
+#     detected_objects = {}
     
-    #DISTANCE
-    # ser = serial.Serial('COM7', 115200)
+#     #DISTANCE
+#     # ser = serial.Serial('COM7', 115200)
 
 
-    duration = 200  # seconds
-    start_time = time.time()
-    toggle = 0
+#     duration = 200  # seconds
+#     start_time = time.time()
+#     toggle = 0
 
-    # Placeholder for the image
-    image_placeholder = st.empty()
-    text_placeholder = st.empty()
+#     # Placeholder for the image
+#     image_placeholder = st.empty()
+#     text_placeholder = st.empty()
 
-    while True:
-        # Capture frame-by-frame
-        ret, frame = cap.read()
+#     while True:
+#         # Capture frame-by-frame
+#         ret, frame = cap.read()
 
-        if not ret:
-            st.write("Error: Failed to capture image.")
-            break
+#         if not ret:
+#             st.write("Error: Failed to capture image.")
+#             break
              
-        results = model.predict(source=frame, device='cpu')
+#         results = model.predict(source=frame, device='cpu')
 
-            # Process detection results
-        for result in results:
-            for box in result.boxes:
-                class_id = box.cls.item()
-                class_name = model.names[class_id]
-                if class_name not in detected_objects:
-                    detected_objects[class_name] = 0
-                detected_objects[class_name] += 1
+#             # Process detection results
+#         for result in results:
+#             for box in result.boxes:
+#                 class_id = box.cls.item()
+#                 class_name = model.names[class_id]
+#                 if class_name not in detected_objects:
+#                     detected_objects[class_name] = 0
+#                 detected_objects[class_name] += 1
 
-        # Get the resulting frame with bounding boxes
-        annotated_frame = results[0].plot()
+#         # Get the resulting frame with bounding boxes
+#         annotated_frame = results[0].plot()
 
-        # Convert annotated frame to a format Streamlit can display
-        annotated_frame = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
+#         # Convert annotated frame to a format Streamlit can display
+#         annotated_frame = cv2.cvtColor(annotated_frame, cv2.COLOR_BGR2RGB)
 
-        # Update the placeholder with the new frame
-        image_placeholder.image(annotated_frame, channels="RGB", use_column_width=True)
+#         # Update the placeholder with the new frame
+#         image_placeholder.image(annotated_frame, channels="RGB", use_column_width=True)
 
-        # if ser.in_waiting > 0:
-        #         line = ser.readline().decode('utf-8').rstrip()
-        #         text_placeholder.write(line)
-        # Check if the duration has passed
-        if time.time() - start_time > duration:
-            break
+#         # if ser.in_waiting > 0:
+#         #         line = ser.readline().decode('utf-8').rstrip()
+#         #         text_placeholder.write(line)
+#         # Check if the duration has passed
+#         if time.time() - start_time > duration:
+#             break
         
-    cap.release()
-    st.session_state.detected_objects = detected_objects
-    return detected_objects
+#     cap.release()
+#     st.session_state.detected_objects = detected_objects
+#     return detected_objects
 
 st.title("Visulaizer")
 if st.button("start Recording"):
     st.write("Recording and detecting objects")
-    detected_objects = capture_and_display()
-    st.write("Detected objects after recording:", st.session_state.detected_objects)
+    # detected_objects = capture_and_display()
+    # st.write("Detected objects after recording:", st.session_state.detected_objects)
 
 if st.button("ASK"):
     st.write("Listening, speak after 2 seconds...")
-    time.sleep(2)  # Allow time for user to prepare
+    # time.sleep(2)  # Allow time for user to prepare
     #text = recognize_speech()
     #st.write("You said:", text)
     # words = process_question(text)
