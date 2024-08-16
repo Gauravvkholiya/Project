@@ -11,6 +11,20 @@ if 'detected_objects' not in st.session_state:
 
 
 
+def recognize_speech():
+    recognizer = sr.Recognizer()
+    with sr.Microphone() as source:
+        st.write("Listening...")
+        audio = recognizer.listen(source)
+        text = ""
+        try:
+            text = recognizer.recognize_google(audio)
+            st.write(f"You said: {text}")
+        except sr.UnknownValueError:
+            st.write("Sorry, I did not understand that.")
+        except sr.RequestError:
+            st.write("Sorry, my speech service is down.")
+    return text
 
 def capture_and_display():
     # Open the webcam (0 is the default camera)
