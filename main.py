@@ -10,9 +10,6 @@ if 'detected_objects' not in st.session_state:
     st.session_state.detected_objects = {}
 
 
-
-
-
 def capture_and_display():
     # Open the webcam (0 is the default camera)
     cap = cv2.VideoCapture(0)
@@ -85,7 +82,7 @@ if st.button("ASK"):
     st.write("Listening, speak after 2 seconds...")
     time.sleep(2)  # Allow time for user to prepare
     #text = recognize_speech()
-    st.write("You said:", text)
+    #st.write("You said:", text)
     # words = process_question(text)
     # st.write("Processed words:", words)
     # ans = query_json(st.session_state.detected_objects, words)
