@@ -3,14 +3,15 @@ import cv2
 import time
 import speech_recognition as sr
 import pyaudio
-
+import nltk
+from nltk.tokenize import word_tokenize
+from nltk.corpus import stopwords
 from ultralytics import YOLO
 
 model = YOLO("yolov8n.pt")
 # Streamlit state for detected objects
 if 'detected_objects' not in st.session_state:
     st.session_state.detected_objects = {}
-
 
 
 def recognize_speech():
@@ -27,6 +28,12 @@ def recognize_speech():
         except sr.RequestError:
             st.write("Sorry, my speech service is down.")
     return text
+
+def process_question(question):
+    words = word_tokenize(question)
+    words = [word for word in words if word.isalpha()]
+    words = [word.lower() for word in words if word not in stopwords.words('english')]
+    return words
 
 def capture_and_display():
     # Open the webcam (0 is the default camera)
@@ -101,8 +108,8 @@ if st.button("ASK"):
     time.sleep(2)  # Allow time for user to prepare
     text = recognize_speech()
     st.write("You said:", text)
-    # words = process_question(text)
-    # st.write("Processed words:", words)
+    words = process_question(text)
+    st.write("Processed words:", words)
     # ans = query_json(st.session_state.detected_objects, words)
     # speak_text(ans)
     # st.write("Answer:", ans)
