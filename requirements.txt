@@ -1,7 +1,2 @@
-opencv-python-headless
-ultralytics
-torch
+
 streamlit
-wheel
-SpeechRecognition
-pyaudio
