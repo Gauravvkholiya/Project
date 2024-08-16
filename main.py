@@ -62,7 +62,7 @@ def speak_text(text):
 
 def capture_and_display():
     # Open the webcam (0 is the default camera)
-    cap = cv2.VideoCapture(0)
+    cap = cv2.VideoCapture(1)
 
     if not cap.isOpened():
         st.write("Error: Could not open webcam.")
