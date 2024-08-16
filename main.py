@@ -2,6 +2,8 @@ import streamlit as st
 import cv2
 import time
 import speech_recognition as sr
+import pyaudio
+
 from ultralytics import YOLO
 
 model = YOLO("yolov8n.pt")
