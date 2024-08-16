@@ -10,20 +10,7 @@ if 'detected_objects' not in st.session_state:
     st.session_state.detected_objects = {}
 
 
-def recognize_speech():
-    recognizer = sr.Recognizer()
-    with sr.Microphone() as source:
-        st.write("Listening...")
-        audio = recognizer.listen(source)
-        text = ""
-        try:
-            text = recognizer.recognize_google(audio)
-            st.write(f"You said: {text}")
-        except sr.UnknownValueError:
-            st.write("Sorry, I did not understand that.")
-        except sr.RequestError:
-            st.write("Sorry, my speech service is down.")
-    return text
+
 
 
 def capture_and_display():
@@ -97,7 +84,7 @@ if st.button("start Recording"):
 if st.button("ASK"):
     st.write("Listening, speak after 2 seconds...")
     time.sleep(2)  # Allow time for user to prepare
-    text = recognize_speech()
+    #text = recognize_speech()
     st.write("You said:", text)
     # words = process_question(text)
     # st.write("Processed words:", words)
