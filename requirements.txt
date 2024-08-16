@@ -5,3 +5,4 @@ streamlit
 SpeechRecognition
 PyAudio
 nltk
+pyttsx3
