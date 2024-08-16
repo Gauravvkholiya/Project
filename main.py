@@ -4,9 +4,11 @@ import time
 import speech_recognition as sr
 import pyaudio
 import nltk
+import pyttsx3
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from ultralytics import YOLO
+from collections import namedtuple
 
 model = YOLO("yolov8n.pt")
 # Streamlit state for detected objects
@@ -34,6 +36,29 @@ def process_question(question):
     words = [word for word in words if word.isalpha()]
     words = [word.lower() for word in words if word not in stopwords.words('english')]
     return words
+
+Pair = namedtuple('Pair', ['word', 'value'])
+
+def query_json(data, words):
+    results = []  # List to store the results
+    for key, value in data.items():
+        for word in words:
+            if word.lower() in key.lower():
+                results.append(Pair(word, value))
+                break  # Stop searching once a match is found
+    if results:
+        return results
+    return "Sorry, I couldn't find the answer."
+
+def speak_text(text):
+    engine = pyttsx3.init()
+    if not text:
+        engine.say("Not found")
+    else:
+        text_to_be_spoken = ' '.join([f"There are {count} {word}" for word, count in text])
+        engine.say(text_to_be_spoken)
+    engine.runAndWait()
+
 
 def capture_and_display():
     # Open the webcam (0 is the default camera)
